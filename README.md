@@ -12,4 +12,14 @@
      ```js
      export async function POST(request:Request) {
         }
-f
+
+### HTTP METHODS AND THERE MEANING
+- GET : read
+- POST : create --most used by me
+- PATCH : update
+- DELETE : destroy
+
+## status response and their meaning
+2** - good
+4** - you messed up 
+5** - server broken

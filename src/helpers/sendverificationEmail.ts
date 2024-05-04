@@ -1,6 +1,8 @@
+//main part of resend where we import both the connection and the format
+
 import { resend } from "@/lib/resend"; //we are making seperate code for better understanding
-import VerificationEmail from "../../emails/VerificationEmail";
-import { ApiResponse } from "@/types/ApiResponse";
+import VerificationEmail from "../../emails/VerificationEmail"; // format for ui
+import { ApiResponse } from "@/types/ApiResponse"; //a standard way to declare type
 
 export async function sendVerificationEmail(
     email:string, username:string, verifycode:string
