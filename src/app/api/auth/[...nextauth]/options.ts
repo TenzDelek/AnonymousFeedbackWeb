@@ -47,7 +47,16 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({token, user}) { // user is the one that we return from the credentialsproviders
-        return token;
+      if(user)
+        {
+          token._id=user._id?.toString()
+          token.isVerified=user.isVerified;
+          token.isAcceptingMessages=user.isAcceptingMessages;
+          token.username=user.username;
+          
+        }  
+      
+      return token;
       },
     async session({session, token}) {
       return session;
