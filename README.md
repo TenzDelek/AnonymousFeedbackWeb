@@ -23,3 +23,6 @@
 2** - good
 4** - you messed up 
 5** - server broken
+
+### to get url in route.ts
+ - const url=request.nextUrl;
