@@ -7,16 +7,20 @@ import UserModel from "@/model/user";
 export const authOptions: NextAuthOptions = {
   //from the docs
   providers: [
+    //github,google providers are easy as compare to this
+    //we are using credentialsprovider (one of the hardest)
     CredentialsProvider({
       id: "credentials",
       name: "Credentials",
-      credentials: {
+      credentials: { //what do we want in credentials
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: any): Promise<any> {
+      //for github,google nextauth do this part
+      async authorize(credentials: any): Promise<any> { // as we are making our own we need to make authorization ourself // 
         await dbConnect();
         try {
+          //checking for user (most basic steps for a backend)
           const user = await UserModel.findOne({
             $or: [
               { email: credentials.identifier },
@@ -70,7 +74,7 @@ export const authOptions: NextAuthOptions = {
     },
    
   },
-  pages: {
+  pages: { //overriding pages / default is /auth
     signIn: "/sign-in", // now for this route nextauth handle all the design
   },
   session: {
